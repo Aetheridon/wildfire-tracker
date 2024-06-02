@@ -4,7 +4,7 @@ import folium
 from flask import Flask, render_template
 
 app = Flask(__name__)
-map = folium.Map(location=(38.94, -105.64), zoom_start=7, min_zoom=7, max_bounds=True, dragging=False)
+map = folium.Map(tiles="cartodb positron")
 
 def plot_dataset():
     data = dataset.get_dataset()
