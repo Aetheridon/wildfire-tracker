@@ -1,2 +1,2 @@
-# colorado-wildfire-tracker
-a wildfire tracker for the State of Colorado
+# wildfire-tracker
+a wildfire tracker
