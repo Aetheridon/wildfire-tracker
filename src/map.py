@@ -1,6 +1,8 @@
 import dataset
 
 import folium
+from folium.plugins import HeatMap
+
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -8,14 +10,16 @@ map = folium.Map(tiles="cartodb positron")
 
 def plot_dataset():
     data = dataset.get_dataset()
+    coords = []
 
     if data == "Error":
         pass #TODO: implement "Offline" message.
 
     else:
         for fire in data:
-            folium.Marker(location=[fire[1], fire[0]], popup="Wildfire").add_to(map)
-        
+            coords.append([fire[1], fire[0]])
+            HeatMap(coords).add_to(map)
+
 plot_dataset()
 
 INDEX = "templates/index.html"
