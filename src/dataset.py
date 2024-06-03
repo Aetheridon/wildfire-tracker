@@ -7,14 +7,14 @@ def get_dataset():
     dataset = []
         
     try:
-        r = requests.get("https://eonet.gsfc.nasa.gov/api/v2.1/events")
+        r = requests.get("https://eonet.gsfc.nasa.gov/api/v3/events")
 
         if r.status_code == 200:
             data = r.json()
             for entry in data["events"]:
                 for titles in entry["categories"]:
                     if titles["title"] == "Wildfires":
-                        for coords in entry["geometries"]:
+                        for coords in entry["geometry"]:
                             dataset.append(coords["coordinates"])
             
             return dataset
