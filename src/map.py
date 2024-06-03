@@ -11,14 +11,10 @@ map = folium.Map(tiles="cartodb positron")
 def plot_dataset():
     data = dataset.get_dataset()
     coords = []
-
-    if data == "Error":
-        pass #TODO: implement "Offline" message.
-
-    else:
-        for fire in data:
-            coords.append([fire[1], fire[0]])
-            HeatMap(coords).add_to(map)
+    
+    for fire in data:
+        coords.append([fire[1], fire[0]])
+        HeatMap(coords).add_to(map)   
 
 plot_dataset()
 
